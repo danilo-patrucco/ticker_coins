@@ -18,12 +18,16 @@ headers = {
 
 session = Session()
 session.headers.update(headers)
+root = GUI.Tk()
+my_gui = GUI.gui(root)
+root.mainloop()
 
 try:
     response = session.get(url, params=parameters)
     data = json.loads(response.text)
-    ticker = GUI.gui(data)
-    ticker.print_data_test()
+
+    #ticker = GUI.gui(data)
+    #ticker.print_data_test()
 
 except (ConnectionError, Timeout, TooManyRedirects) as e:
     print(e)
